@@ -1,0 +1,41 @@
+#! /opt/homebrew/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+S_0x126604940 .scope module, "full_adder" "full_adder" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "s";
+    .port_info 3 /INPUT 1 "ci";
+    .port_info 4 /OUTPUT 1 "co";
+o0x128040100 .functor BUFZ 1, C4<z>; HiZ drive
+o0x128040130 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x60000143c5b0 .functor XOR 1, o0x128040100, o0x128040130, C4<0>, C4<0>;
+o0x128040160 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x60000143c620 .functor XOR 1, L_0x60000143c5b0, o0x128040160, C4<0>, C4<0>;
+L_0x60000143c690 .functor AND 1, o0x128040100, o0x128040130, C4<1>, C4<1>;
+L_0x60000143c700 .functor AND 1, o0x128040130, o0x128040160, C4<1>, C4<1>;
+L_0x60000143c770 .functor OR 1, L_0x60000143c690, L_0x60000143c700, C4<0>, C4<0>;
+L_0x60000143c7e0 .functor AND 1, o0x128040160, o0x128040100, C4<1>, C4<1>;
+L_0x60000143c850 .functor OR 1, L_0x60000143c770, L_0x60000143c7e0, C4<0>, C4<0>;
+v0x600000d3c7e0_0 .net *"_ivl_0", 0 0, L_0x60000143c5b0;  1 drivers
+v0x600000d3c870_0 .net *"_ivl_10", 0 0, L_0x60000143c7e0;  1 drivers
+v0x600000d3c900_0 .net *"_ivl_4", 0 0, L_0x60000143c690;  1 drivers
+v0x600000d3c990_0 .net *"_ivl_6", 0 0, L_0x60000143c700;  1 drivers
+v0x600000d3ca20_0 .net *"_ivl_8", 0 0, L_0x60000143c770;  1 drivers
+v0x600000d3cab0_0 .net "a", 0 0, o0x128040100;  0 drivers
+v0x600000d3cb40_0 .net "b", 0 0, o0x128040130;  0 drivers
+v0x600000d3cbd0_0 .net "ci", 0 0, o0x128040160;  0 drivers
+v0x600000d3cc60_0 .net "co", 0 0, L_0x60000143c850;  1 drivers
+v0x600000d3ccf0_0 .net "s", 0 0, L_0x60000143c620;  1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "src/full_adder.v";

@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "iverilog-compile",
+            "type": "shell",
+            "command": "iverilog -o ${fileBasenameNoExtension}.out ${file} && vvp ${fileBasenameNoExtension}.out",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+} 
